@@ -1,0 +1,13 @@
+{% extends 'blog/base.html' %}
+
+{% block content %}
+<h1 class="text-2xl font-bold mb-4">{{ post.id|default:"Create New Post" }}</h1>
+
+<form method="POST">
+    {% csrf_token %}
+    <input type="text" name="title" value="{{ post.title|default:'' }}" placeholder="Title" class="border p-2 w-full mb-4">
+    <textarea name="content" placeholder="Content" class="border p-2 w-full mb-4">{{ post.content|default:'' }}</textarea>
+    <button type="submit" class="bg-green-500 text-white py-2 px-4 rounded">Save</button>
+</form>
+
+{% endblock %}
